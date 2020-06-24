@@ -1,0 +1,290 @@
+/*
+This contains the main styles for the app
+
+author: Emmanuel Joshua;
+version: 1.0.0;
+date created: 19th June 2020;
+name: tasky;
+
+#############################################################
+Table of contents
+1. Basics
+2. Layout
+3. Navigation
+4. Responsiveness
+5. Miscellaneous
+##############################################################
+*/
+
+
+/* 1. Basics
+Mostly contains general and high-level styles for the app, e.g colors, fonts, etc.
+*/
+
+:root{
+	--main: #29032C;
+	--light-grey: #ddd;
+	--light-pink: #F4A0FA;
+	--bg: #29032C34;
+}
+html,
+body{
+	padding: 0px;
+	margin:  0px;
+	/* set default font size for relative referencing */
+	font-size: 16px;  
+}
+
+body{
+	background-color: var(--bg);
+	font-family: "Roboto", Arial, Serif;
+	line-height: 1.5em;
+	position: relative;
+}
+
+
+/* 2. Layout
+** 2.1 -- Header
+*/
+.main-header{
+	width: 98%;
+	padding: 0.5% 1%;
+	background-color: var(--main);
+	display: flex;
+	flex-direction: row;
+	color: var(--light-grey);
+	border-bottom: 2px solid var(--light-pink);
+	height: 50px;
+	position: fixed;
+	top: 0px;
+	z-index: 200;
+}
+
+.top-header{
+	flex-basis: 50%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+.nav-icon{
+	flex-basis: 30%;
+	font-size: 2em;
+	align-self: center;
+}
+
+.nav-icon i:hover{
+	color: var(--light-pink);
+	cursor: pointer;
+}
+.app-title{
+	font-size: 2em;
+	text-transform: uppercase;
+	flex-basis: 70%;
+	align-self: center;
+}
+
+/* 2.2 headings
+** styling for h1 - h4
+*/
+h1{
+	font-size: 2em;
+	text-transform: uppercase;
+	color: var(--main);
+	font-weight: bold;
+}
+h2{
+	font-size: 1.8em;
+	font-weight: bold;
+}
+
+/* 2.3 Main section for all pages */
+.main-wrapper{
+	width: 980px;
+	padding:60px 10px 70px 10px;
+	margin:  auto;
+	position: relative;
+}
+
+
+/* 2.4 Footer section for all pages */
+.main-footer{
+	background-color: #000;
+	color: var(--light-grey);
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	bottom: 0px;
+	z-index: 200;
+}
+
+.top-footer,
+.bottom-footer
+{
+	width: 980px;
+	padding: 10px;
+	margin: auto;
+}
+
+.top-footer{
+	border-bottom:2px solid var(--main);
+	text-align: center;
+}
+
+.bottom-footer{
+	display: inherit;
+	flex-direction: row;
+	justify-content: center;
+}
+
+/*
+** 2.5 new/edit task form
+*/
+.new-task{
+	width: 80%;
+	margin: auto;
+	background-color: #29032cfe;
+	padding: 10px;
+	position: absolute;
+	z-index: 15;
+	box-shadow: 2px 2px 5px var(--main);
+
+}
+
+.new-task h2{
+	text-align: center;
+	margin: 0px;
+	color: var(--light-pink);
+}
+
+.close-edit{
+	position: absolute;
+	display: block;
+	width: 20px;
+	width: 20px;
+	top: -20px;
+	z-index: 200;
+	right: -20px;
+	color: darkred;
+	font-size: 1.2em;
+}
+.close-edit:hover{
+	color: var(--main);
+	cursor: pointer;
+}
+
+.input-fields{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+
+.input-group{
+	flex-basis: 50%;
+	margin: 5px 0px;
+}
+
+.input-fields label{
+	display: block;
+}
+
+/* 
+3. Navigation
+*/
+
+/*
+** 3.1 main nav
+*/
+.main-nav{
+	width: 980px;
+	padding: 10px;
+	flex-basis: 50%;
+	display: block;
+}
+
+.main-nav li{
+	display: inline-block;
+	list-style-type: none;
+	position: relative;
+}
+.main-nav a{
+	text-decoration: none;
+	color: var(--light-pink);
+	padding: 5px 10px;
+}
+
+.main-nav a:hover{
+	color: var(--light-grey);
+}
+.main-nav li ul{
+	position: absolute;
+	left: 0px;
+	background-color: var(--main);
+	top: 30px;
+	padding-bottom: 5px;
+	display: none;
+}
+.main-nav li li{
+	margin-left: -35px;
+}
+
+.main-nav .notifs{
+	color: #f00;
+	font-weight: bold;
+}
+
+.main-nav li:hover  ul{
+	display: block;
+}
+
+/*
+** 3.2 footer social nav
+*/
+.social-menu a{
+	display: inline-flex;
+	margin-left: 5px;
+	text-decoration: none;
+	color: var(--light-pink);
+}
+
+.social-menu a:hover{
+	color: var(--light-grey);
+}
+/*
+** 4. Responsiveness
+** 4.1. tablets and medium screen devices
+*/
+
+@media only screen and (max-width:768px){
+	
+}
+
+/*
+** 4.2 mobile phones
+
+*/
+
+/*
+** 4.3 devices with smaller screens
+*/
+
+
+/*
+** 5. Miscellaneous 
+styling for non-section elements and pseudo selectors
+*/
+
+.fa-heart{
+	color: #f00;
+	animation-name: pop-heart;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in;
+}
+
+@keyframes pop-heart{
+	100%{
+		transform: scale(1.5);
+	}
+}
