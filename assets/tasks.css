@@ -1,0 +1,158 @@
+/*
+This contains the  styles for the tasks.html page
+
+author: Emmanuel Joshua;
+version: 1.0.0;
+date created: 25th June 2020;
+
+1. new/edit task form
+
+*/
+.new-task{
+	width: 60%;
+
+	/*
+	Center the form with left offset and margin-left
+
+	left:  50%;
+	margin-left: -40%;
+	*/
+	left: 50%;
+	margin-left: -40%;
+	background-color: #29032cfe;
+	padding: 20px;
+	position: absolute;
+	z-index: 15;
+	box-shadow: 2px 2px 5px var(--main);
+	color: var(--light-grey);
+	display: none;
+}
+
+.new-task h2{
+	text-align: center;
+	margin: 0px;
+	color: var(--light-pink);
+}
+
+.close-edit{
+	position: absolute;
+	display: block;
+	width: 20px;
+	width: 20px;
+	top: -20px;
+	z-index: 200;
+	right: -20px;
+	color: darkred;
+	font-size: 1.2em;
+}
+.close-edit:hover{
+	color: var(--main);
+	cursor: pointer;
+}
+
+.input-fields{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+
+.input-group{
+	flex-basis: 50%;
+	margin: 5px 0px;
+}
+.input-group:first-child{
+	flex-basis: 100%;
+}
+.input-group:nth-child(n+2){
+	flex-basis: 33%;
+}
+
+.input-fields label{
+	display: block;
+	font-weight: bold;
+}
+.input-fields input, 
+.input-fields select{
+	font-size: 1.2em;
+	color: var(--main);
+	padding: 2px 1%;
+	background-color: var(--light-pink);
+	border: none;
+}
+
+#task{
+	width: 98%;
+}
+
+.input-fields input[type="button"]{
+	box-shadow: 2px 2px 3px var(--light-grey) inset;
+	background-color: #000;
+	color: var(--light-grey);
+	border-radius: 5px;
+	padding: 5px 15px;
+}
+
+.input-fields input[type="button"]:hover{
+	box-shadow: none;
+	cursor: pointer;
+}
+
+
+/*
+** 2 tasks.html	table
+*/
+.tasks-table{
+	width: 100%;
+}
+
+.tasks-table thead tr:first-child{
+	background: linear-gradient(180deg,  #29032C 50%, #29032C77 100% );
+	color: var(--light-grey);
+}
+
+.tasks-table  tr td:first-child,
+.tasks-table  tr th:first-child{
+	display: none;
+}
+
+.tasks-table tbody tr:nth-child(2n){
+	background-color: #29032C55;
+}
+
+.tasks-table tr td{
+	padding: 2px 5px;
+}
+
+/*
+** 3. Control buttons & inputs
+*/
+
+.controls button{
+	padding: 5px 10px;
+	border-radius: 5px;
+	border: none;
+	display: inline-block;
+	margin-bottom: 3px;
+	background: var(--main);
+	color: var(--light-grey);
+	box-shadow: 1px 1px 2px #000;
+}
+.controls button:hover{
+	cursor: pointer;
+	background-color: #29032C55; 
+	color: var(--main);
+}
+
+.taskEdit{
+	background-color: inherit;
+	border: none;
+ }
+
+.tasks-table input{
+	background-color: #aaaaaa55;
+	border: none;
+	border-bottom: 3px groove #aaa;
+	padding: 2px 1%;
+	color: var(--main);
+}
