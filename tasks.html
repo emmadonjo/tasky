@@ -12,6 +12,8 @@
 
 	<!-- link to main css file -->
 	<link href="assets/tasky.css" type="text/css" rel="stylesheet" />
+	<!-- link to page specific css file -->
+	<link href="assets/tasks.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 	<header class="main-header">
@@ -92,15 +94,16 @@
 					<input type="text" id="task" name="task" required="required" placeholder="Enter task" maxlength="80" />
 				</div>
 				<div class="input-group">
-					<label for="date">Select date:</label>
+					<label for="date">Due date:</label>
 					<input type="date" id="date" name="date" required="required" />
 				</div>
 				<div class="input-group">
-					<label for="time">Set time:</label>
+					<label for="time">Due time:</label>
 					<input type="time" id="time" name="time" required="required" />
 				</div>
 				<div class="input-group">
-					<select required="required" >
+					<label for="priority">Priority:</label>
+					<select required="required" id="priority" >
 						<option selected="selected" value="">Select</option>
 						<option value="h">H</option>
 						<option value="m">M</option>
@@ -108,7 +111,13 @@
 					</select>
 				</div>
 				<div class="input-group">
-					<input type="button" value="ADD TASK" id="btnAddTask" />
+					<input type="button" value="ADD & NEW" id="btnAddNew" />
+				</div>
+				<div class="input-group">
+					<input type="button" value="ADD & CLOSE" id="btnAddClose" />
+				</div>
+				<div class="input-group">
+					<input type="button" value="SAVE" id="btnSaveEdit" />
 				</div>
 			</section>
 		</section>
@@ -134,34 +143,34 @@
 			<input type="checkbox" id="select">
 			<label for="select">Tick</label>
 		</div>
-		<table>
+		<table class="tasks-table">
 			<thead>
 				<tr>
 					<th role="col">ID</th>
-					<th role="col">
+					<th role="col" id="sortT" width="45%">
 						Task
 						<i class="fas fa-sort-down"></i>
 					</th>
-					<th role="col">
+					<th role="col"  id="sortD" width="15%">
 						Date
 						<i class="fas fa-sort-down"></i>
 					</th>
-					<th role="col">Time</th>
-					<th role="col">
+					<th role="col" width="15%">Time</th>
+					<th role="col" id="sortP" width="15%">
 						Priority
 						<i class="fas fa-sort-down"></i>
 					</th>
-					<th role="col"></th>
+					<th role="col" width="20%"></th>
 				</tr>
 				<tr>
 					<td></td>
 					<td>
-						<input type="search" id="filterTask" placeholder="filter" />
+						<input type="search" id="filterTask" placeholder="filter" maxlength="20" />
 					</td>
 					<td></td>
 					<td></td>
 					<td>
-						<input type="search" id="filterPriority" placeholder="filter" />
+						<input type="search" id="filterPriority" placeholder="filter" maxlength="7"/>
 					</td>
 				</tr>
 			</thead>
@@ -174,7 +183,7 @@
 					<td>High</td>
 					<td>
 						<input type="checkbox" />
-						<button id="taskEdit">
+						<button class="taskEdit">
 							<i class="fas fa-edit"></i>
 						</button>
 					</td>
@@ -187,7 +196,7 @@
 					<td>High</td>
 					<td>
 						<input type="checkbox" />
-						<button id="taskEdit">
+						<button class="taskEdit">
 							<i class="fas fa-edit"></i>
 						</button>
 					</td>
@@ -200,7 +209,7 @@
 					<td>High</td>
 					<td>
 						<input type="checkbox" />
-						<button id="taskEdit">
+						<button class="taskEdit">
 							<i class="fas fa-edit"></i>
 						</button>
 					</td>
@@ -213,7 +222,7 @@
 					<td>High</td>
 					<td>
 						<input type="checkbox" />
-						<button id="taskEdit">
+						<button class="taskEdit">
 							<i class="fas fa-edit"></i>
 						</button>
 					</td>
@@ -226,7 +235,7 @@
 					<td>High</td>
 					<td>
 						<input type="checkbox" />
-						<button id="taskEdit">
+						<button class="taskEdit">
 							<i class="fas fa-edit"></i>
 						</button>
 					</td>
@@ -239,7 +248,7 @@
 					<td>High</td>
 					<td>
 						<input type="checkbox" />
-						<button id="taskEdit">
+						<button class="taskEdit">
 							<i class="fas fa-edit"></i>
 						</button>
 					</td>
@@ -252,7 +261,7 @@
 					<td>High</td>
 					<td>
 						<input type="checkbox" />
-						<button id="taskEdit">
+						<button class="taskEdit">
 							<i class="fas fa-edit"></i>
 						</button>
 					</td>
@@ -265,7 +274,7 @@
 					<td>High</td>
 					<td>
 						<input type="checkbox" />
-						<button id="taskEdit">
+						<button class="taskEdit">
 							<i class="fas fa-edit"></i>
 						</button>
 					</td>
@@ -278,7 +287,7 @@
 					<td>High</td>
 					<td>
 						<input type="checkbox" />
-						<button id="taskEdit">
+						<button class="taskEdit">
 							<i class="fas fa-edit"></i>
 						</button>
 					</td>
@@ -291,7 +300,7 @@
 					<td>High</td>
 					<td>
 						<input type="checkbox" />
-						<button id="taskEdit">
+						<button class="taskEdit">
 							<i class="fas fa-edit"></i>
 						</button>
 					</td>
@@ -304,7 +313,7 @@
 					<td>High</td>
 					<td>
 						<input type="checkbox" />
-						<button id="taskEdit">
+						<button class="taskEdit">
 							<i class="fas fa-edit"></i>
 						</button>
 					</td>
@@ -317,7 +326,7 @@
 					<td>High</td>
 					<td>
 						<input type="checkbox" />
-						<button id="taskEdit">
+						<button class="taskEdit">
 							<i class="fas fa-edit"></i>
 						</button>
 					</td>
@@ -330,7 +339,7 @@
 					<td>High</td>
 					<td>
 						<input type="checkbox" />
-						<button id="taskEdit">
+						<button class="taskEdit">
 							<i class="fas fa-edit"></i>
 						</button>
 					</td>
@@ -343,7 +352,7 @@
 					<td>High</td>
 					<td>
 						<input type="checkbox" />
-						<button id="taskEdit">
+						<button class="taskEdit">
 							<i class="fas fa-edit"></i>
 						</button>
 					</td>
@@ -356,7 +365,7 @@
 					<td>High</td>
 					<td>
 						<input type="checkbox" />
-						<button id="taskEdit">
+						<button class="taskEdit">
 							<i class="fas fa-edit"></i>
 						</button>
 					</td>
@@ -369,7 +378,7 @@
 					<td>High</td>
 					<td>
 						<input type="checkbox" />
-						<button id="taskEdit">
+						<button class="taskEdit">
 							<i class="fas fa-edit"></i>
 						</button>
 					</td>
@@ -382,7 +391,7 @@
 					<td>High</td>
 					<td>
 						<input type="checkbox" />
-						<button id="taskEdit">
+						<button class="taskEdit">
 							<i class="fas fa-edit"></i>
 						</button>
 					</td>
