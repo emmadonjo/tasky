@@ -16,7 +16,6 @@
 <body>
 	<header class="main-header">
 		<section class="top-header">
-			
 			<span class="app-title"><img src="assets/img/icon.png" alt="logo" width="32px" /> Tasky</span>
 			
 		</section>
@@ -76,46 +75,54 @@
 		</nav>
 	</header>
 	<main class="main-wrapper">
-		<h1>Home</h1>
-		<section class="fold">
-			
-		</section>
-		<section class="features">
-			<h2>Features</h2>
-			<section class="features-wrapper">
-				<section class="features-item">
-					<i class="fas fa-chart-bar"></i>
-					<h3>Reports</h3>
-					<p>Use visual reports to manage your task and performance</p>
-				</section>
-				<section class="features-item">
-					<i class="fas fa-bell"></i>
-					<h3>Notifications</h3>
-					<p>Keep up with tasks using browser & dashboard notifications</p>
-				</section>
+		<section class="top-profile">
+			<section class="grp">
+				<img src="assets/img/donjo1.jpg" alt="Emmanuel Joshua" />
+				<h1>Profile: <span class="profile-name">Emmanuel Joshua</span></h1>
 			</section>
-			<section class="features-item">
-					<i class="fas fa-chart-bar"></i>
-					<h3>Offline Aceess</h3>
-					<p>Access your data while offline any time.</p>
-				</section>
-				<section class="features-item">
-					<i class="fas fa-database"></i>
-					<h3>Browser Storage</h3>
-					<p>Uses your browser's local storage capacity to save yours tasks</p>
-				</section>
-
+			<section class="grp">
+				<input type="file" id="change-profile" hidden="hidden"/>
+				<button for="change-profile" aria-role="button">Upload</button>
+				<button type="button" id="editSaveProfile" >Edit Profile</button>
+			</section>
 		</section>
-		<section class="need-help">
-			<h2>Need Help?</h2>
-		</section>
+	
+			<form action="" class="profile">
+				<section class="profile-group">
+					<label for="bio" class="label">Bio:</label>
+					<textarea id="bio" disabled rows="4" maxlength="150">I'm a gentle and task-oriented personality who loves everything to be planned and broken down into bite-sized goals that are achievable within a given timeline</textarea>
+					<label for="surname"class="label" >Surname:</label>
+					<input type="text" disabled value="Emmanuel" id="surname"/>
+					<label for="other-names" class="label"> Other Names:</label>
+					<input type="text" disabled value="Joshua Don-Jo" id="other-names" />
+					<span class="label"> Sex:</span>
+					<input type="radio" disabled checked value="male" name="sex"  id="male"/>
+						<label for="male">Male</label>
+					<input type="radio" disabled value="female" name="sex"  id="female"/>
+						<label for="female">Female</label>
+				</section>
+				<section class="profile-group">
+					<label for="username"class="label" >Username:</label>
+					<input type="text" disabled value="emmadonjo" id="username"/>
+					<label for="password"class="label" >Password:</label>
+						<span class="pass-error">Invalid password</span>
+					<input type="password" disabled value="********" id="password"/>
+					<label for="pass-confirm"class="label" >Confirm password:</label>
+					<input type="password" disabled value="********" id="pass-confirm"/>
+					<button type="button"  id="change-pass"> Change Password
+					</button> 
+				</section>
+				<button type="submit" id="save-edit">
+					Submit
+				</button>
+			</form>
 	</main>
 	<footer class="main-footer">
 		<section class="top-footer">
 			<div id="info">Thashas</div>
 		</section>
 		<section class="bottom-footer">
-			<span> Developed with <i class="far fa-heart"></i> by Emmanuel Joshua,  <span id="current-year"></span> </span>  |  
+			<span> Developed with <i class="far fa-heart"></i> by Emmanuel Joshua,  <span id="current-year"></span>  </span>  |  
 			<nav role="social" class="social-menu">					
 				<a href="https://github.com/emmadonjo">
 					<i class="fab fa-github"></i>  Github
@@ -130,7 +137,6 @@
 			</nav>
 		</section>
 	</footer>
-	<!-- link to app-wide js file -->
 	<script type="text/javascript" src="assets/tasky.js"></script>
 </body>
 </html>

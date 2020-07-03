@@ -18,7 +18,9 @@
 <body>
 	<header class="main-header">
 		<section class="top-header">
-			
+			<span class="nav-icon" id="toggle-menu">
+				<i class="fas fa-bars"></i>
+			</span>
 			<span class="app-title"><img src="assets/img/icon.png" alt="logo" width="32px" /> Tasky</span>
 			
 		</section>
@@ -78,42 +80,75 @@
 		</nav>
 	</header>
 	<main class="main-wrapper">
-		<h1>Reports</h1>
-		<section class="reports">
-			<section class="report-card">
-				<h2>Summary</h2>
-				<section class="report-container" id="summary">
-				</section>
-				<button id="view-summary" class="task-view">View tasks</button>
-			</section>
+		<section class="login-form">
+			<input type="radio" checked="checked" id="login-tab" name="tabs" />
+			<label for="login-tab" class="tabs-label">Login</label>
+			
+			<input type="radio" id="signup-tab" name="tabs" />
+			<label for="signup-tab" class="tabs-label">Sign up</label>
 
-			<section class="report-card">
-				<h2>Due</h2>
-				<section class="report-container due-task">
-				</section>
-				<button id="view-due" class="task-view">View tasks</button>
-			</section>
-			<section class="report-card">
-				<h2>Priority</h2>
-				<section class="report-container priority">
-				</section>
-				<button id="view-priority" class="task-view">View tasks</button>
-			</section>
-			<section class="report-card">
-				<h2>Completed: Priority</h2>
-				<section class="report-container completed-p">
-				</section>
-				<button id="view-com-p" class="task-view">View tasks</button>
-			</section>
-			<section class="report-card">
-				<h2>Incoming</h2>
-				<section class="report-container incoming">
-				</section>
-				<button id="view-incoming" class="task-view">View tasks</button>
-			</section>
+			<form action="#" method="post" id="login-form" class="form-class">
+				<header>
+					Login
+				</header>
+				<label for="username">Username:</label>
+				<div class="inp-group">
+					<i class="fas fa-user"></i>
+					<input type="text" id="username" required placeholder="Enter username" />
+				</div>
+				<label for="password">Password:</label>
+				<div class="inp-group">
+					<i class="fas fa-lock"></i>
+					<input type="password" id="password" required placeholder="********" />
+				</div>
+				<input type="submit" value="Login" id="login-submit" />	
+			</form>
+
+			<form action="#" method="post" id="signup-form" class="form-class">
+				<header>
+					Sign up
+				</header>
+				<label for="lastname">Lastname:</label>
+				<div class="inp-group">
+					<i class="fas fa-user"></i>
+					<input type="text" id="lastname" required placeholder="Enter lastname" />
+				</div>
+				<label for="firstname">Firstname:</label>
+				<div class="inp-group">
+					<i class="fas fa-user"></i>
+					<input type="text" id="firstname" required placeholder="Enter firstname" />
+				</div>
+				<label for="user-sex">Sex:</label>
+				<div class="inp-group">
+					<input type="radio" id="male" checked="checked" name="sex" />
+					<label for="male"><i class="fas fa-user"></i> Male</label>
+					<input type="radio" id="female" name="sex" />
+					<label for="female"><i class="fas fa-user"></i> Female</label>
+				</div>
+				<label for="username1">Username:</label>
+				<div class="inp-group">
+					<i class="fas fa-user"></i>
+					<input type="text" id="username1" required placeholder="Enter username" />
+				</div>
+				<label for="password1">Password:</label>
+				<div class="inp-group">
+					<i class="fas fa-lock"></i>
+					<input type="password" id="password1" required placeholder="********" />
+				</div>
+				<label for="confirm-password1">Confirm password:</label>
+				<div class="inp-group">
+					<i class="fas fa-lock"></i>
+					<input type="password" id="confirm-password1" required placeholder="********" />
+				</div>
+				<label for="bio">Bio:</label>
+				<div class="inp-group">
+					<i class="fas fa-pen-nib"></i>
+					<textarea  id="bio" required="required"maxlength="150" />Not more 150 characters</textarea>
+				</div>
+				<input type="submit" value="Sign up" id="signup-submit" />	
+
+			</form>
 		</section>
-
-
 	</main>
 	<footer class="main-footer">
 		<section class="top-footer">
