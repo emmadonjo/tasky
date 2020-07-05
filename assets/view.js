@@ -10,18 +10,64 @@ name: tasky.js;
 
 (function (){
 	"use strict";
+	const tasks ={
+	//stores each task before pushing to localStorage
+	};
 
-	//define global variables
-	let homeLink = document.querySelector(".top-header");
-	let showYear = document.querySelector("#current-year");
+	const globalVar = {
+		//variables to be used globally 
+		//avoids cluttering the global space
+
+		homeLink: document.querySelector(".top-header"),
+
+		showYear: document.querySelector("#current-year")
+	};
+
+	const utilsFuncs = {
+		//utility functions for frequent operations
+
+		//toggle element display
+		toggleDisplay: function(elem, klass){
+			elem.classList.toggle(klass);
+		},
+
+		encryptPassword: function(password){
+
+		},
+
+		//saves user details to localStorage
+		newUser: function(lname, fname, sex, uname, password, bio, image){
+			user.lastname = lname;
+			user.firstname = fname;
+			user.sex = sex;
+			user.username = uname;
+			user.password = password;
+			user.bio = bio;
+			user.image = image;
+
+			localStorage.setItem("userDetails", JSON.stringify(user));
+		},
+
+		//retrieves user from localStorage
+
+		getUser: function(userName){
+			let u = JSON.parse(localStorage.getItem("users"));
+			return u[userName]; // returns the details of the specified user
+		},
+		selectTask: function(){
+
+		}
+	};
+
+	
 
 
 
 	//show current on footer
-	showYear.textContent = new Date().getFullYear();
+	globalVar.showYear.textContent = new Date().getFullYear() +" |";
 
 	// redirects to home page
-	homeLink.onclick = function(){
+	globalVar.homeLink.onclick = function(){
 		window.location.href = "index.html";
 	};
 	let nav = document.querySelector(".main-nav ul")
@@ -56,7 +102,7 @@ name: tasky.js;
 			//create login menu
 			a.href = "login.html";
 			a.setAttribute("title", "Login");
-			i.setAttribute("class", "fas fa-sync");
+			i.setAttribute("class", "fas fa-lock-open");
 			span.setAttribute("class", "nav-text");
 			span.textContent = "Login";
 			a.appendChild(i);
