@@ -61,17 +61,13 @@ body{
 }
 
 .top-header{
-	flex-basis: 35%;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
+	flex-basis: 20%;
 }
 
 .top-header:hover{
 	cursor: pointer;
 }
 .nav-icon{
-	flex-basis: 30%;
 	font-size: 2em;
 	align-self: center;
 }
@@ -83,7 +79,6 @@ body{
 .app-title{
 	font-size: 2em;
 	text-transform: uppercase;
-	flex-basis: 70%;
 	align-self: center;
 }
 
@@ -116,23 +111,14 @@ h2{
 	color: var(--light-grey);
 	width: 100%;
 	display: flex;
-	flex-direction: column;
-	position: fixed;
-	bottom: 0px;
-	z-index: 200;
+	flex-direction: column;	
 }
 
-.top-footer,
 .bottom-footer
 {
 	width: 980px;
 	padding: 10px;
 	margin: auto;
-}
-
-.top-footer{
-	border-bottom:2px solid var(--main);
-	text-align: center;
 }
 
 .bottom-footer{
@@ -151,8 +137,9 @@ h2{
 .main-nav{
 	width: 980px;
 	padding: 10px;
-	flex-basis: 65%;
+	flex-basis: 80%;
 	display: block;
+	font-size: 0.9em;
 }
 
 .main-nav li{
@@ -209,9 +196,13 @@ h2{
 */
 
 @media only screen and (max-width:1000px){
-	.main-wrapper{
+	.main-wrapper,
+	.bottom-footer{
 		width: 95%;
+		margin: auto;
 	}
+
+	
 }
 
 /*
@@ -219,13 +210,106 @@ h2{
 */
 
 @media only screen and (max-width: 768px){
-	
+	.app-title{
+		font-size: 1.6em;
+	}
+	.nav-icon{
+		font-size: 2em;
+		align-self: center;
+	}
 }
 
 /*
 ** 4.3 devices with smaller screens
 */
+@media only screen and (max-width: 640px){
+	h1{
+		font-size: 1.5em;
+	}
+	.tasks-table {
+		font-size: 0.8em;
+	}
+	.nav-text{
+		display: none;
+	}
+	.main-nav{
+		flex-basis: 70%;
+	}
+	.top-header{
+		flex-basis: 30%;
+	}
 
+	.main-nav ul li ul li{
+		width: 100px;
+		top: -4px;
+	}
+	.bottom-footer{
+		flex-direction: column;
+		text-align: center;
+		font-size: 0.8em;
+	}
+}
+
+@media only screen and (max-width: 480px){
+	.btn-text{
+		display: none;
+	}
+
+	.app-title{
+		font-size: 1em;
+	}
+	.main-nav a{
+		margin:0px;
+		padding: 8px;
+	}
+
+	.profile section.profile-group{
+		/* truncates the existing two columns layout to single vertical layout on profile.html file */
+		flex-basis: 95%;
+		margin: auto;
+	}
+
+	.profile .profile-group input,
+	.profile .profile-group textarea{
+		width: 98%;
+		padding: 1%;
+	}
+
+	.profile label.label{
+		padding:  2px 4px;
+		font-size: 0.8em;
+	}
+}
+
+@media only screen and (max-width: 320px){
+	.top-footer,
+	.bottom-footer{
+		font-size: 0.6em;
+	}
+
+	.controls .ctrls{
+		font-size: 0.7em;
+		padding: 3px;
+	}
+	.text{
+		display: none;
+	}
+	.top-header{
+		flex-basis: 5%;
+	}
+	.top-header > img{
+		width: 16px;
+		height: 16px;
+	}
+	.main-nav{
+		flex-basis: 95%;
+	}
+
+	.main-nav a{
+		margin:0px;
+		padding: 2px;
+	}
+}
 
 /*
 ** 5. Miscellaneous 
@@ -336,67 +420,79 @@ styling for non-section elements and pseudo selectors
 	cursor: pointer;
 }
 
+button#save-edit{
+	margin-top: 15px;
+}
+.label{
+	margin-top: 5px;
+	display: inline-block;
+}
+
 /*
 ** charts.html
 */
 .reports{
+	width: 100%;
 	display: flex;
 	flex-flow: row wrap;
-	width: 100%;
 	justify-content: space-between;
 }
-.report-card{
-	width: 300px;
-	border:1px solid var(--main);
-	height: 200px;
-	margin-bottom: 10px;
-	position:  relative;
-}
 
-@media only screen and (max-width:636px){
-	.report-card{
-		width: 95%;
-		margin: 10px auto;
-	}
+.report-card{
+	width: 45%;
+	min-height: 300px;
+	max-height: 400px;
+	margin-bottom: 20px;
+	border: 2px solid var(--main);
+	position: relative;
 }
 
 .report-card h2{
-	width: 98%;
-	background-color: var(--main);
-	padding: 1%;
-	text-align: center;
-	font-size: 1.5em;
 	margin: 0px;
-	color: var(--light-grey);
-	font-weight: normal;
-}
-.task-view{
 	background-color: var(--main);
 	color: var(--light-grey);
-	border: none;
-	box-shadow: 2px 2px 3px #000;
-	padding: 5px 10px;
-	position: absolute;
-	left: 50px;
+	padding: 10px 0px;
+	text-align: center;
 }
 
+.task-view{
+	position: absolute;
+	bottom: 0px;
+	background: var(--main);
+	color: var(--light-grey);
+	padding: 5px 15px;
+	border: none;
+	box-shadow: 2px 2px 3px var(--main);
+}
 .task-view:hover{
+	cursor: pointer;
 	background-color: var(--light-grey);
 	color: var(--main);
-	cursor: pointer;
 }
 
+@media only screen and (max-width: 640px){
+	/* responsiveness for charts' containers */
+	.report-card{
+		width: 95%;
+		margin: 20px auto;
+	}
+}
 /*login.html styles */
-.login-form{
-	width: 480px;
+.log-sign-form{
+	width: 460px;
 	margin: 20px auto;
 	background-color: var(--main);
 	color: var(--light-grey);
-	padding: 1%;
+	padding: 10px;
 	box-shadow: 3px 3px 5px var(--main);
 }
-
-.login-form header{
+@media only screen and (max-width: 480px){
+	.log-sign-form{
+		width: 95%;
+		padding: 2.5%;
+	}
+}
+.log-sign-form header{
 	color: var(--light-pink);
 	padding: 15px 10px;
 	text-align: center;
@@ -405,13 +501,13 @@ styling for non-section elements and pseudo selectors
 	font-weight: bold;
 }
 
-.login-form label{
+.log-sign-form label{
 	font-weight: bold;
 }
 
-.login-form .inp-group{
+.log-sign-form .inp-group{
 	margin-bottom: 10px;
-	background-color: var(--light-pink);
+	background-color: #F4A0FA43;
 	border-radius: 5px;
 	width: 98%;
 	padding: 1%;
@@ -425,7 +521,7 @@ styling for non-section elements and pseudo selectors
 .inp-group input,
 .inp-group textarea{
 	width: 92%;
-	background-color: var(--light-pink);
+	background-color:  transparent;
 	border: none;
 }
 .inp-group textarea{
@@ -434,6 +530,7 @@ styling for non-section elements and pseudo selectors
 	font-family: "Roboto", Arial, Serif;
 	font-weight: normal;
 	overflow: hidden;
+	resize: none;
 }
 .inp-group input:invalid{
 	border: none;
@@ -468,10 +565,10 @@ input#male{
 	width: auto;
 }
 
-.login-form label{
+.log-sign-form label{
 	margin-right: 15px;
 }
-.login-form label:hover{
+.log-sign-form label:hover{
 	cursor: pointer;
 }
 

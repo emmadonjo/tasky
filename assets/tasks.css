@@ -144,7 +144,7 @@ date created: 25th June 2020;
 	color: var(--main);
 }
 
-.taskEdit{
+td .fa-edit{
 	background-color: inherit;
 	border: none;
  }

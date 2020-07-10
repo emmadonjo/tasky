@@ -14,14 +14,15 @@
 	<link href="assets/tasky.css" type="text/css" rel="stylesheet" />
 	<!-- link to page specific css file -->
 	<link href="assets/tasks.css" type="text/css" rel="stylesheet" />
-</head>
+
+	<!-- IE 9 and below specific styles -->
+	<!--[if lte IE 9]>
+		<link href="assets/ie-styles.css" type="text/css" rel="stylesheet" />
+	<![endif]-->
 <body>
 	<header class="main-header">
 		<section class="top-header">
-			<span class="nav-icon" id="toggle-menu">
-				<i class="fas fa-bars"></i>
-			</span>
-			<span class="app-title"><img src="assets/img/icon.png" alt="logo" width="32px" /> Tasky</span>
+			<span class="app-title"><img src="assets/img/icon.png" alt="logo" width="32px" /><span class="text"> Tasky</span></span>
 			
 		</section>
 		<nav role="main" class='main-nav'>
@@ -59,13 +60,6 @@
 					<a href="tasks.html" title="Manage tasks">
 						<i class="fas fa-tasks"></i>
 						<span class="nav-text">Tasks</span>
-					</a>
-					
-				</li>
-				<li>
-					<a href="settings.html" title="Settings">
-						<i class="fas fa-cog"></i>
-						<span class="nav-text">Settings</span>
 					</a>
 					
 				</li>
@@ -122,6 +116,10 @@
 			</section>
 		</section>
 		<div class="controls">
+			<button class="ctrls square" id="btnNewTask" title="add task">
+				<i class="fas fa-plus-square"></i>
+				<span class="btn-text">Add</span>
+			</button>
 			<button class="ctrls edit">
 				<i class="fas fa-edit"></i> 
 				<span class="btn-text">
@@ -135,27 +133,22 @@
 					Delete
 				</span>
 			</button>
-
-			<button class="ctrls square" id="btnNewTask">
-				<i class="fas fa-plus-square"></i>
-				<span class="btn-text">Add Task</span>
-			</button>
-			<button class="ctrls square" id="btnRefresh">
+			<button class="ctrls square" id="btnRefresh" title="refresh tasks">
 				<i class="fas fa-sync"></i>
 				<span class="btn-text">Refresh</span>
 			</button>
-			<button class="ctrls square" id="btnRefresh">
+			<button class="ctrls square" id="btnFilter" title="filter tasks">
 				<i class="fas fa-filter"></i>
 				<span class="btn-text">Filter</span>
 			</button>
-			<input type="checkbox" id="select">
+			<input type="checkbox" id="select" title="select all tasks">
 			<label for="select">Tick</label>
 		</div>
 		<table class="tasks-table">
 			<thead>
 				<tr>
 					<th role="col">ID</th>
-					<th role="col" id="sortT" width="45%">
+					<th role="col" id="sortT" width="60%">
 						Task
 						<i class="fas fa-sort-down"></i>
 					</th>
@@ -163,23 +156,9 @@
 						Date
 						<i class="fas fa-sort-down"></i>
 					</th>
-					<th role="col" width="15%">Time</th>
-					<th role="col" id="sortP" width="15%">
-						Priority
-						<i class="fas fa-sort-down"></i>
-					</th>
-					<th role="col" width="20%"></th>
-				</tr>
-				<tr>
-					<td></td>
-					<td>
-						<input type="search" id="filterTask" placeholder="filter" maxlength="20" />
-					</td>
-					<td></td>
-					<td></td>
-					<td>
-						<input type="search" id="filterPriority" placeholder="filter" maxlength="7"/>
-					</td>
+					<th role="col" width="10%">Time</th>
+					<th role="col" width="5%">Status</th>
+					<th role="col" width="10%"></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -188,12 +167,31 @@
 					<td>Design graphics</td>
 					<td>18/06/2020</td>
 					<td>09:12am</td>
-					<td>High</td>
+					<td>
+						<input type="checkbox" checked="checked" class="status" />
+					
+					</td>
 					<td>
 						<input type="checkbox" />
-						<button class="taskEdit">
+						
 							<i class="fas fa-edit"></i>
-						</button>
+					
+					</td>
+				</tr>
+				<tr>
+					<td>11</td>
+					<td><sup title="high">^</sup> Design graphics</td>
+					<td>18/06/2020</td>
+					<td>09:12am</td>
+					<td>
+						<input type="checkbox" class="status" />
+					
+					</td>
+					<td>
+						<input type="checkbox" />
+						
+							<i class="fas fa-edit"></i>
+						
 					</td>
 				</tr>
 				<tr>
@@ -201,12 +199,15 @@
 					<td>Design graphics</td>
 					<td>18/06/2020</td>
 					<td>09:12am</td>
-					<td>High</td>
+					<td>
+						<input type="checkbox" checked="checked" class="status" />
+					
+					</td>
 					<td>
 						<input type="checkbox" />
-						<button class="taskEdit">
+						
 							<i class="fas fa-edit"></i>
-						</button>
+						
 					</td>
 				</tr>
 				<tr>
@@ -214,12 +215,16 @@
 					<td>Design graphics</td>
 					<td>18/06/2020</td>
 					<td>09:12am</td>
-					<td>High</td>
+					<td>
+						<input type="checkbox" checked="checked" class="status" />
+					
+					</td>
+					
 					<td>
 						<input type="checkbox" />
-						<button class="taskEdit">
+					
 							<i class="fas fa-edit"></i>
-						</button>
+					
 					</td>
 				</tr>
 				<tr>
@@ -227,12 +232,16 @@
 					<td>Design graphics</td>
 					<td>18/06/2020</td>
 					<td>09:12am</td>
-					<td>High</td>
+					<td>
+						<input type="checkbox" checked="checked" class="status" />
+					
+					</td>
+					
 					<td>
 						<input type="checkbox" />
-						<button class="taskEdit">
+						
 							<i class="fas fa-edit"></i>
-						</button>
+						
 					</td>
 				</tr>
 				<tr>
@@ -240,12 +249,15 @@
 					<td>Design graphics</td>
 					<td>18/06/2020</td>
 					<td>09:12am</td>
-					<td>High</td>
+					<td>
+						<input type="checkbox" checked="checked" class="status" />
+					
+					</td>
 					<td>
 						<input type="checkbox" />
-						<button class="taskEdit">
+						
 							<i class="fas fa-edit"></i>
-						</button>
+						
 					</td>
 				</tr>
 				<tr>
@@ -253,12 +265,15 @@
 					<td>Design graphics</td>
 					<td>18/06/2020</td>
 					<td>09:12am</td>
-					<td>High</td>
+					<td>
+						<input type="checkbox" checked="checked" class="status" />
+					
+					</td>
 					<td>
 						<input type="checkbox" />
-						<button class="taskEdit">
+						
 							<i class="fas fa-edit"></i>
-						</button>
+						
 					</td>
 				</tr>
 				<tr>
@@ -266,12 +281,15 @@
 					<td>Design graphics</td>
 					<td>18/06/2020</td>
 					<td>09:12am</td>
-					<td>High</td>
+					<td>
+						<input type="checkbox" checked="checked" class="status" />
+					
+					</td>
 					<td>
 						<input type="checkbox" />
-						<button class="taskEdit">
+						
 							<i class="fas fa-edit"></i>
-						</button>
+						
 					</td>
 				</tr>
 				<tr>
@@ -279,12 +297,14 @@
 					<td>Design graphics</td>
 					<td>18/06/2020</td>
 					<td>09:12am</td>
-					<td>High</td>
+					<td>
+						<input type="checkbox" checked="checked" class="status" />
+					
+					</td>
 					<td>
 						<input type="checkbox" />
-						<button class="taskEdit">
+						
 							<i class="fas fa-edit"></i>
-						</button>
 					</td>
 				</tr>
 				<tr>
@@ -292,12 +312,15 @@
 					<td>Design graphics</td>
 					<td>18/06/2020</td>
 					<td>09:12am</td>
-					<td>High</td>
+					<td>
+						<input type="checkbox" checked="checked" class="status" />
+					
+					</td>
 					<td>
 						<input type="checkbox" />
-						<button class="taskEdit">
+						
 							<i class="fas fa-edit"></i>
-						</button>
+						
 					</td>
 				</tr>
 				<tr>
@@ -305,12 +328,15 @@
 					<td>Design graphics</td>
 					<td>18/06/2020</td>
 					<td>09:12am</td>
-					<td>High</td>
+					<td>
+						<input type="checkbox" checked="checked" class="status" />
+					
+					</td>
 					<td>
 						<input type="checkbox" />
-						<button class="taskEdit">
+						
 							<i class="fas fa-edit"></i>
-						</button>
+						
 					</td>
 				</tr>
 				<tr>
@@ -318,12 +344,15 @@
 					<td>Design graphics</td>
 					<td>18/06/2020</td>
 					<td>09:12am</td>
-					<td>High</td>
+					<td>
+						<input type="checkbox" checked="checked" class="status" />
+					
+					</td>
 					<td>
 						<input type="checkbox" />
-						<button class="taskEdit">
+						
 							<i class="fas fa-edit"></i>
-						</button>
+						
 					</td>
 				</tr>
 				<tr>
@@ -331,12 +360,15 @@
 					<td>Design graphics</td>
 					<td>18/06/2020</td>
 					<td>09:12am</td>
-					<td>High</td>
+					<td>
+						<input type="checkbox" checked="checked" class="status" />
+					
+					</td>
 					<td>
 						<input type="checkbox" />
-						<button class="taskEdit">
+						
 							<i class="fas fa-edit"></i>
-						</button>
+						
 					</td>
 				</tr>
 				<tr>
@@ -344,12 +376,15 @@
 					<td>Design graphics</td>
 					<td>18/06/2020</td>
 					<td>09:12am</td>
-					<td>High</td>
+					<td>
+						<input type="checkbox" checked="checked" class="status" />
+					
+					</td>
 					<td>
 						<input type="checkbox" />
-						<button class="taskEdit">
+						
 							<i class="fas fa-edit"></i>
-						</button>
+						
 					</td>
 				</tr>
 				<tr>
@@ -357,12 +392,15 @@
 					<td>Design graphics</td>
 					<td>18/06/2020</td>
 					<td>09:12am</td>
-					<td>High</td>
+					<td>
+						<input type="checkbox" checked="checked" class="status" />
+					
+					</td>
 					<td>
 						<input type="checkbox" />
-						<button class="taskEdit">
+						
 							<i class="fas fa-edit"></i>
-						</button>
+						
 					</td>
 				</tr>
 				<tr>
@@ -370,25 +408,15 @@
 					<td>Design graphics</td>
 					<td>18/06/2020</td>
 					<td>09:12am</td>
-					<td>High</td>
 					<td>
-						<input type="checkbox" />
-						<button class="taskEdit">
-							<i class="fas fa-edit"></i>
-						</button>
+						<input type="checkbox"  class="status" />
+					
 					</td>
-				</tr>
-				<tr>
-					<td>11</td>
-					<td>Design graphics</td>
-					<td>18/06/2020</td>
-					<td>09:12am</td>
-					<td>High</td>
 					<td>
 						<input type="checkbox" />
-						<button class="taskEdit">
+						
 							<i class="fas fa-edit"></i>
-						</button>
+						
 					</td>
 				</tr>
 				<tr>
@@ -396,12 +424,13 @@
 					<td>Discuss with client</td>
 					<td>18/06/2020</td>
 					<td>09:12am</td>
-					<td>High</td>
+					<td>
+						<input type="checkbox"  class="status" />
+					
+					</td>
 					<td>
 						<input type="checkbox" />
-						<button class="taskEdit">
 							<i class="fas fa-edit"></i>
-						</button>
 					</td>
 				</tr>
 			</tbody>
@@ -412,7 +441,7 @@
 			<div id="info">Thashas</div>
 		</section>
 		<section class="bottom-footer">
-			<span> Developed with <i class="far fa-heart"></i> by Emmanuel Joshua,  <span id="current-year"></span> </span>  |  
+			<span> Developed with <i class="far fa-heart"></i> by Emmanuel Joshua,  <span id="current-year"></span> </span>  
 			<nav role="social" class="social-menu">					
 				<a href="https://github.com/emmadonjo">
 					<i class="fab fa-github"></i>  Github
@@ -427,6 +456,6 @@
 			</nav>
 		</section>
 	</footer>
-	<script type="text/javascript" src="assets/tasky.js"></script>
+	<script type="module/javascript" src="assets/view.js"></script>
 </body>
 </html>

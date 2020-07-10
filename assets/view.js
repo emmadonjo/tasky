@@ -10,18 +10,25 @@ name: tasky.js;
 
 (function (){
 	"use strict";
+	import{Task, Users, session, utils} from "./model.js";
 
-	//define global variables
-	let homeLink = document.querySelector(".top-header");
-	let showYear = document.querySelector("#current-year");
+	const bindings = {
+		//variables to be used globally within the script
+		//avoids cluttering the global space
+		homeLink: document.querySelector(".top-header"),
+		showYear: document.querySelector("#current-year"),
+
+	};
+
+	
 
 
 
-	//show current on footer
-	showYear.textContent = new Date().getFullYear();
+	//show current year on footer
+	bindings.showYear.textContent = new Date().getFullYear() +" |";
 
 	// redirects to home page
-	homeLink.onclick = function(){
+	bindings.homeLink.onclick = function(){
 		window.location.href = "index.html";
 	};
 	let nav = document.querySelector(".main-nav ul")
@@ -30,8 +37,9 @@ name: tasky.js;
 	let i = document.createElement("i")
 	let span = document.createElement("span");
 	
+	
 	{
-		//adds either a login or logout button
+		//adds either a login or logout button to the nav
 		if(sessionStorage.getItem('loggedIn')){
 			//create logout menu
 			a.href = "#";
@@ -56,7 +64,7 @@ name: tasky.js;
 			//create login menu
 			a.href = "login.html";
 			a.setAttribute("title", "Login");
-			i.setAttribute("class", "fas fa-sync");
+			i.setAttribute("class", "fas fa-lock-open");
 			span.setAttribute("class", "nav-text");
 			span.textContent = "Login";
 			a.appendChild(i);
@@ -65,5 +73,6 @@ name: tasky.js;
 			nav.appendChild(li);
 		}
 	}
-//display tasks statuses on footer info panel
+
+
 }());
