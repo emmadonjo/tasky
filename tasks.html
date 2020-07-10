@@ -14,7 +14,11 @@
 	<link href="assets/tasky.css" type="text/css" rel="stylesheet" />
 	<!-- link to page specific css file -->
 	<link href="assets/tasks.css" type="text/css" rel="stylesheet" />
-</head>
+
+	<!-- IE 9 and below specific styles -->
+	<!--[if lte IE 9]>
+		<link href="assets/ie-styles.css" type="text/css" rel="stylesheet" />
+	<![endif]-->
 <body>
 	<header class="main-header">
 		<section class="top-header">
@@ -452,6 +456,6 @@
 			</nav>
 		</section>
 	</footer>
-	<script type="text/javascript" src="assets/tasky.js"></script>
+	<script type="module/javascript" src="assets/view.js"></script>
 </body>
 </html>

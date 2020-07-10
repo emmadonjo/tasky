@@ -10,64 +10,25 @@ name: tasky.js;
 
 (function (){
 	"use strict";
-	const tasks ={
-	//stores each task before pushing to localStorage
-	};
+	import{Task, Users, session, utils} from "./model.js";
 
-	const globalVar = {
-		//variables to be used globally 
+	const bindings = {
+		//variables to be used globally within the script
 		//avoids cluttering the global space
-
 		homeLink: document.querySelector(".top-header"),
+		showYear: document.querySelector("#current-year"),
 
-		showYear: document.querySelector("#current-year")
-	};
-
-	const utilsFuncs = {
-		//utility functions for frequent operations
-
-		//toggle element display
-		toggleDisplay: function(elem, klass){
-			elem.classList.toggle(klass);
-		},
-
-		encryptPassword: function(password){
-
-		},
-
-		//saves user details to localStorage
-		newUser: function(lname, fname, sex, uname, password, bio, image){
-			user.lastname = lname;
-			user.firstname = fname;
-			user.sex = sex;
-			user.username = uname;
-			user.password = password;
-			user.bio = bio;
-			user.image = image;
-
-			localStorage.setItem("userDetails", JSON.stringify(user));
-		},
-
-		//retrieves user from localStorage
-
-		getUser: function(userName){
-			let u = JSON.parse(localStorage.getItem("users"));
-			return u[userName]; // returns the details of the specified user
-		},
-		selectTask: function(){
-
-		}
 	};
 
 	
 
 
 
-	//show current on footer
-	globalVar.showYear.textContent = new Date().getFullYear() +" |";
+	//show current year on footer
+	bindings.showYear.textContent = new Date().getFullYear() +" |";
 
 	// redirects to home page
-	globalVar.homeLink.onclick = function(){
+	bindings.homeLink.onclick = function(){
 		window.location.href = "index.html";
 	};
 	let nav = document.querySelector(".main-nav ul")
@@ -76,8 +37,9 @@ name: tasky.js;
 	let i = document.createElement("i")
 	let span = document.createElement("span");
 	
+	
 	{
-		//adds either a login or logout button
+		//adds either a login or logout button to the nav
 		if(sessionStorage.getItem('loggedIn')){
 			//create logout menu
 			a.href = "#";
@@ -111,5 +73,6 @@ name: tasky.js;
 			nav.appendChild(li);
 		}
 	}
-//display tasks statuses on footer info panel
+
+
 }());
