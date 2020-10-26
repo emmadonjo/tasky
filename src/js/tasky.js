@@ -5,9 +5,10 @@
 import "../css/fontawesome.min.css";
 import "../css/solid.min.css";
 import "../css/style.css";
-
+import "./canvasjs.min.js";
 //import js model file
 import {Data} from "./model";
+
 
 //declare variables
 let mobileBtn = document.querySelector(".nav-btn");
@@ -65,8 +66,8 @@ const display_tasks =(limit=0)=>{
                     <button class='task-edit'>
                         <i class='fas fa-edit'></i>
                     </button>
-                    <button class='task-delete'>
-                        <i class='fas fa-trash'></i>
+                    <button>
+                        <i class='fas fa-trash task-delete'></i>
                     </button>
                     <button>
                         <input type='checkbox' class='select-task' />
@@ -109,14 +110,21 @@ const selectAllTasks = ()=>{
 const deleteSelectedTask = (selectedTask)=>{
     if(selectedTask.length>0){
         //ask user if they actually want to delete the selected task(s)
-        let ans =confirm("Are you sure you want to delete these tasks");
+        let tasksSelected = selectedTask.length;
+        let ans;
+        if(tasksSelected==0){
+            return false
+        }else if(tasksSelected == 1){
+            ans = confirm(`Are you sure you want to delete the selected task?`);
+        }else if(tasksSelected > 1){
+            ans  =confirm(`Are you sure you want to delete these tasks - (${tasksSelected})?`);
+        }
 
         if(ans){
             //get a collection of the selected task
-            console.log("Deleted");
             for(let i =0; i < selectedTask.length; i++){
                 let id = selectedTask[i].parentNode.parentNode.parentNode.querySelector(".task-id");
-                model.deleteTask(id.textContent.trim());
+                model.deleteTask(parseInt(id.textContent.trim()));
             }
 
             display_tasks(0);
@@ -137,6 +145,7 @@ const addTask =()=>{
 
     //gets the last id from localStorage and increments by 1
     const id = parseInt(model.getLastId());
+    console.log(id);
     let status = "pending";
     let error = false;
 
@@ -196,12 +205,37 @@ const addTask =()=>{
     }
 }
 
+const showCharts = ()=>{
+    //displays charts on the dashboard if records are returned from localStorage
+    const data = model.getTasks();
+    
+};
+
 
 
 //initial load the dashboard
 window.addEventListener("load", ()=>{
-    let url = "./views/dashboard.html";
-    fetchPage(url);
+    let dashboard_html = `
+                <div class="wrapper">
+                    <div class="row">
+                        <div class="col-6" id="monthlyChart">
+                            <h1>Hello</h1>
+                        </div>
+                        <div class="col-6" id="priorityChart">
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12" id="incomingTask">
+
+                        </div>
+                    </div>
+                </div>
+            `;
+             document.querySelector("#root").innerHTML = dashboard_html;
+
+             showCharts();
 });
 
 //toggle mobile menu button
@@ -315,7 +349,8 @@ nav.addEventListener("click", e=>{
                     </div>
                 </div>
             `;   
-            document.querySelector("#root").innerHTML = tasks;
+            const root = document.querySelector("#root");
+            root.innerHTML = tasks;
             const filterBtn = document.querySelector("#filter");
             const sortBtn = document.querySelector("#sort");
             const taskEditBtn = document.querySelectorAll(".task-edit");
@@ -324,9 +359,27 @@ nav.addEventListener("click", e=>{
             const deleteAllBtn = document.querySelector("#deleteAll");
             const selectAllBtn = document.querySelector("#selectAll");
 
-            //import tasks.js
+            root.onclick = e=>{
+                if(e.target.className.indexOf("task-delete") != -1){
+                    let ans = confirm("Continue with deletion of the task?");
+                    if(ans){
+                        let id = e.target.parentNode.parentNode.parentNode.querySelector(".task-id");
+                        model.deleteTask(parseInt(id.textContent.trim()));
+                        console.log(id.textContent);
+                        display_tasks(0);
+                    }else{
+                        console.log("task deletion cancelled");
+                        return false;
+                    }
+                    
+                }
+            }
+            
+
             if(selectAllBtn){
                 selectAllBtn.addEventListener("click", ()=>{
+
+                    //select all the tasks
                     selectAllTasks();
                 });
             }
@@ -346,15 +399,20 @@ nav.addEventListener("click", e=>{
             //add functionality for individual task editing and deleting
             
 
+            //delete one or more selected tasks
             if(deleteAllBtn){
                 deleteAllBtn.addEventListener("click", ()=>{
+                
+                //select all the checked tasks
                 let selected = document.querySelectorAll(".select-task:checked");
-
+                
+                //call the delete task function
                 deleteSelectedTask(selected);
             
                 });
              }
 
+            //display tasks after deletion
             display_tasks(0);
             break;
         default:
@@ -377,9 +435,9 @@ nav.addEventListener("click", e=>{
                     </div>
                 </div>
             `;
-
-            //import canvasjs.min.js
-            //import dashboard.js
+             document.querySelector("#root").innerHTML = dashboard_html;
+            
+             showCharts();
     }
     
 });

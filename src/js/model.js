@@ -70,33 +70,33 @@ export function Data(){
         }
     },
 
-    // this.deleteTask = id=>{
-    //     //deletes a task from local storage
-    //     //returns a string stating the status
-    //     //@param id - unique id of the task to be deleted
+    this.deleteTask = id=>{
+        //deletes a task from local storage
+        //returns a string stating the status
+        //@param id - unique id of the task to be deleted
 
         
-    //     if(id != ""){
-    //         let allTasks = this.getTasks();
-    //         taskAvailable = false;
+        if(id != ""){
+            let allTasks = this.getTasks();
 
-    //         allTasks.forEach(x => {
-    //             if(x.id == id){
-    //                 taskAvailable = true;
-    //                 delete x;
-                    
+            allTasks.forEach(x => {
+                if(x.id == id){
+                    let indexofX = allTasks.indexOf(x);
+                    if(indexofX!=-1){
+                        allTasks.splice(indexofX,1);
+                        localStorage.setItem("tasky_tasks", JSON.stringify(allTasks));
+                        console.log(x.id + " has been deleted");  
+                        return true;               
+                    }
 
-    //                 //save the remaining tasks to local storage
-    //                 window.localStorage.removeItem("tasky_tasks");
-    //                 localStorage.setItem("tasky_tasks", JSON.stringify(allTasks));
-    //                 console.log(x + " has been deleted");
-    //                 return true;
-    //             }
-    //         });
-    //     }else{
-    //         return false;
-    //     }
-    // },
+                    //save the remaining tasks to local storage
+                   
+                }
+            });
+        }else{
+            return false;
+        }
+    },
 
 
     this.getLastId = ()=>{
@@ -106,11 +106,12 @@ export function Data(){
 
         // loop through tasks and compare  the ids
         if(allTasks){
-            allTasks.forEach(x=>{
-                if(parseInt(x.id) > taskId){
-                    taskId = parseInt(x.id) + 1;
+
+            for(let x = 0; x < allTasks.length; x++){
+                if(parseInt(allTasks[x].id )>= taskId){
+                    taskId = parseInt(allTasks[x].id) + 1; 
                 }
-            });
+            }
         }
 
         //return the largest id
