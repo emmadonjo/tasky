@@ -1,0 +1,44 @@
+{
+  "name": "tasky",
+  "version": "1.0.0",
+  "description": "An intuitive to-do web app based on the local storage api",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "babel": "babel --presets es2015 src/app.js -o public_html/assets/js/tasky.bundle.js",
+    "start": "http-server",
+    "watch": "webpack --watch",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emmadonjo/tasky.git"
+  },
+  "keywords": [
+    "tasky",
+    "localStorage",
+    "to-do",
+    "app"
+  ],
+  "author": "Emmanuel Joshua",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/emmadonjo/tasky/issues"
+  },
+  "homepage": "https://github.com/emmadonjo/tasky#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.1.0",
+    "babel-preset-es2015": "^6.24.1",
+    "css-loader": "^4.3.0",
+    "file-loader": "^6.1.0",
+    "html-loader": "^1.3.1",
+    "html-webpack-plugin": "^4.5.0",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "http-server": "^0.12.3"
+  }
+}
